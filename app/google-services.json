@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "3449018221",
+    "project_id": "device-streaming-d09ad2f9",
+    "storage_bucket": "device-streaming-d09ad2f9.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:3449018221:android:cfd71ec010142ee76f2c64",
+        "android_client_info": {
+          "package_name": "com.example.nearu"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBvOIpPL60MlPzLInbRVJ_q6tDyFEiAR5Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
