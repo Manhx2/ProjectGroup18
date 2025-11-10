@@ -3,6 +3,7 @@ package com.example.nearu;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -115,9 +116,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if (currentUser == null) {
             goToLogin();
         } else {
+            String email = currentUser.getEmail();
+
             NavigationView navigationView = findViewById(R.id.nav_view);
             TextView headerEmail = navigationView.getHeaderView(0).findViewById(R.id.nav_header_email);
-            headerEmail.setText(currentUser.getEmail());
+            headerEmail.setText(email);
+
+            // Lưu email vào SharedPreferences để dùng ở Activity khác
+            SharedPreferences prefs = getSharedPreferences("UserData", MODE_PRIVATE);
+            SharedPreferences.Editor editor = prefs.edit();
+            editor.putString("user_email", email);
+            editor.apply();
         }
     }
 
@@ -125,11 +134,19 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         int itemId = item.getItemId();
         if (itemId == R.id.nav_profile) {
-            Toast.makeText(this, "Chức năng Hồ sơ!", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(this, ProfileActivity.class));
         } else if (itemId == R.id.nav_friends) {
             Toast.makeText(this, "Chức năng Bạn bè!", Toast.LENGTH_SHORT).show();
+        } else if (itemId == R.id.nav_settings) {
+            Toast.makeText(this, "Chức năng Cài đặt!", Toast.LENGTH_SHORT).show();
         } else if (itemId == R.id.nav_logout) {
             mAuth.signOut();
+            // Xóa email trong SharedPreferences
+            SharedPreferences prefs = getSharedPreferences("UserData", MODE_PRIVATE);
+            SharedPreferences.Editor editor = prefs.edit();
+            editor.clear();
+            editor.apply();
+
             goToLogin();
         }
 
