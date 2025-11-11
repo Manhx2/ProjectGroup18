@@ -1,0 +1,384 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    android:padding="16dp">
+
+    <RelativeLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/btnBack"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:focusable="true"
+            android:src="@drawable/ic_btn_back"
+            android:padding="15dp"
+            android:clickable="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cài đặt"
+            android:layout_centerInParent="true"
+            android:textStyle="bold"
+            android:textColor="@color/colorAccent"
+            android:textSize="25sp" />
+
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/header" >
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp">
+
+            <LinearLayout
+                android:id="@+id/section_account"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingVertical="10dp"
+                android:clickable="true"
+                android:focusable="true" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tài khoản"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="18sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/account_submenu"
+                android:orientation="vertical"
+                android:layout_marginStart="24dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/tv_account_info"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:focusable="true"
+                    android:text="Thông tin cá nhân"
+                    android:textSize="16sp"
+                    android:paddingVertical="8dp"
+                    android:textColor="@color/colorAccent"
+                    android:clickable="true"/>
+
+                <TextView
+                    android:id="@+id/tv_security"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:focusable="true"
+                    android:text="Bảo mật"
+                    android:textSize="16sp"
+                    android:paddingVertical="8dp"
+                    android:textColor="@color/colorAccent"
+                    android:clickable="true"/>
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorSecondary"
+                android:layout_marginVertical="5dp"/>
+
+            <LinearLayout
+                android:id="@+id/section_privacy"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingVertical="10dp"
+                android:clickable="true"
+                android:focusable="true" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Quyền riêng tư và Vị trí"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="18sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/privacy_submenu"
+                android:orientation="vertical"
+                android:layout_marginStart="24dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/tv_update_location"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:focusable="true"
+                    android:text="Cập nhật vị trí"
+                    android:textSize="16sp"
+                    android:paddingVertical="8dp"
+                    android:textColor="@color/colorAccent"
+                    android:clickable="true"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:id="@+id/tv_toggle_location_sharing"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Bật / tắt chia sẻ vị trí"
+                        android:textSize="16sp"
+                        android:paddingVertical="8dp"
+                        android:textColor="@color/colorAccent" />
+
+                    <Switch
+                        android:id="@+id/switch_location_sharing"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="true"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"/>
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tv_hide_location_user"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:focusable="true"
+                    android:text="Ẩn vị trí với người dùng cụ thể"
+                    android:textSize="16sp"
+                    android:paddingVertical="8dp"
+                    android:textColor="@color/colorAccent"
+                    android:clickable="true"/>
+
+                <LinearLayout
+                    android:id="@+id/tv_friend_request_permission"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:focusable="true"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:clickable="true" >
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Ai có thể gửi lời mời kết bạn"
+                        android:textSize="16sp"
+                        android:paddingVertical="8dp"
+                        android:textColor="@color/colorAccent" />
+
+                    <TextView
+                        android:id="@+id/tv_friend_request_selected"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Bất kỳ ai"
+                        android:textColor="@color/colorSecondary"
+                        android:textSize="16sp" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tv_block_list"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:focusable="true"
+                    android:text="Danh sách chặn"
+                    android:textSize="16sp"
+                    android:paddingVertical="8dp"
+                    android:textColor="@color/colorAccent"
+                    android:clickable="true"/>
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorSecondary"
+                android:layout_marginVertical="5dp"/>
+
+            <LinearLayout
+                android:id="@+id/section_notification"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingVertical="10dp"
+                android:clickable="true"
+                android:focusable="true" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Thông báo"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="18sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/notification_submenu"
+                android:orientation="vertical"
+                android:layout_marginStart="24dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:id="@+id/tv_toggle_friend_inv"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Khi có lời mời kết bạn mới"
+                        android:textSize="16sp"
+                        android:paddingVertical="8dp"
+                        android:textColor="@color/colorAccent" />
+
+                    <Switch
+                        android:id="@+id/switch_friend_inv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="true"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:id="@+id/tv_toggle_friend_nearby"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Khi bạn bè ở gần"
+                        android:textSize="16sp"
+                        android:paddingVertical="8dp"
+                        android:textColor="@color/colorAccent" />
+
+                    <Switch
+                        android:id="@+id/switch_friend_nearby"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="true"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorSecondary"
+                android:layout_marginVertical="5dp"/>
+
+            <LinearLayout
+                android:id="@+id/section_support"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingVertical="10dp"
+                android:clickable="true"
+                android:focusable="true" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Hỗ trợ"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="18sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/support_submenu"
+                android:orientation="vertical"
+                android:layout_marginStart="24dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/tv_help_center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:focusable="true"
+                    android:text="Trung tâm trợ giúp"
+                    android:textSize="16sp"
+                    android:paddingVertical="8dp"
+                    android:textColor="@color/colorAccent"
+                    android:clickable="true"/>
+
+                <TextView
+                    android:id="@+id/tv_FAQ"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:focusable="true"
+                    android:text="Câu hỏi thường gặp"
+                    android:textSize="16sp"
+                    android:paddingVertical="8dp"
+                    android:textColor="@color/colorAccent"
+                    android:clickable="true"/>
+
+                <TextView
+                    android:id="@+id/tv_error_report"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:focusable="true"
+                    android:text="Báo lỗi"
+                    android:textSize="16sp"
+                    android:paddingVertical="8dp"
+                    android:textColor="@color/colorAccent"
+                    android:clickable="true"/>
+
+                <TextView
+                    android:id="@+id/tv_app_details"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:focusable="true"
+                    android:text="Chi tiết ứng dụng"
+                    android:textSize="16sp"
+                    android:paddingVertical="8dp"
+                    android:textColor="@color/colorAccent"
+                    android:clickable="true"/>
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorSecondary"
+                android:layout_marginVertical="5dp"/>
+
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

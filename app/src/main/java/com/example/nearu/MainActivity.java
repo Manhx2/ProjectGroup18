@@ -138,7 +138,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         } else if (itemId == R.id.nav_friends) {
             Toast.makeText(this, "Chức năng Bạn bè!", Toast.LENGTH_SHORT).show();
         } else if (itemId == R.id.nav_settings) {
-            Toast.makeText(this, "Chức năng Cài đặt!", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(this, SettingsActivity.class));
         } else if (itemId == R.id.nav_logout) {
             mAuth.signOut();
             // Xóa email trong SharedPreferences
