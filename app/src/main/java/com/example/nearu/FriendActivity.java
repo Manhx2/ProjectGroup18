@@ -2,10 +2,12 @@ package com.example.nearu;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.TypedValue;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
@@ -13,7 +15,7 @@ import android.view.View;
 
 import java.util.ArrayList;
 
-public class FriendActivity extends AppCompatActivity {
+public class FriendActivity extends BaseActivity {
 
     RecyclerView recyclerView;
     ArrayList<Friend> friendList;
@@ -50,19 +52,32 @@ public class FriendActivity extends AppCompatActivity {
         tabAdd = findViewById(R.id.tabAdd);
 
         View.OnClickListener listener = v -> {
-            resetTabs();
-            v.setBackgroundColor(Color.parseColor("#456882"));
+            int currentTheme = ThemeManager.getSavedTheme(this);
+            // Mặc định
+            int colorPrimary = ContextCompat.getColor(this, R.color.theme1_primary);
+            int colorSecondary = ContextCompat.getColor(this, R.color.theme1_secondary);
+            // Đổi theme
+            if (currentTheme == ThemeManager.THEME_1) {
+                colorPrimary = ContextCompat.getColor(this, R.color.theme1_primary);
+                colorSecondary = ContextCompat.getColor(this, R.color.theme1_secondary);
+            } else if (currentTheme == ThemeManager.THEME_2) {
+                colorPrimary = ContextCompat.getColor(this, R.color.theme2_primary);
+                colorSecondary = ContextCompat.getColor(this, R.color.theme2_secondary);
+            } else if (currentTheme == ThemeManager.THEME_3) {
+                colorPrimary = ContextCompat.getColor(this, R.color.theme3_primary);
+                colorSecondary = ContextCompat.getColor(this, R.color.theme3_secondary);
+            }
+
+            tabOnline.setBackgroundColor(colorPrimary);
+            tabAll.setBackgroundColor(colorPrimary);
+            tabAdd.setBackgroundColor(colorPrimary);
+
+            v.setBackgroundColor(colorSecondary);
         };
 
         tabOnline.setOnClickListener(listener);
         tabAll.setOnClickListener(listener);
         tabAdd.setOnClickListener(listener);
-    }
-
-    private void resetTabs() {
-        tabOnline.setBackgroundColor(Color.parseColor("#1B3C53"));
-        tabAll.setBackgroundColor(Color.parseColor("#1B3C53"));
-        tabAdd.setBackgroundColor(Color.parseColor("#1B3C53"));
     }
 }
 

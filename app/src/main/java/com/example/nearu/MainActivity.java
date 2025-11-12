@@ -40,7 +40,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.HashMap;
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private FirebaseAuth mAuth;
     private MapView map = null;

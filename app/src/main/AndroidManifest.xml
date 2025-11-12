@@ -20,6 +20,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.NearU">
         <activity
+            android:name=".ThemeSelectorActivity"
+            android:exported="false" />
+        <activity
             android:name=".SettingsActivity"
             android:exported="false" />
         <activity
@@ -46,7 +49,6 @@
         <activity
             android:name=".ForgotPasswordActivity"
             android:exported="true" />
-
         <activity
             android:name=".FriendActivity"
             android:exported="true" />
