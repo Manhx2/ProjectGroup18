@@ -1,7 +1,9 @@
 package com.example.nearu;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -13,7 +15,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-public class SettingsActivity extends AppCompatActivity {
+public class SettingsActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -120,6 +122,15 @@ public class SettingsActivity extends AppCompatActivity {
             });
             languageBuilder.setNegativeButton("Hủy", null);
             languageBuilder.show();
+        });
+
+        TextView btnTheme = findViewById(R.id.tv_theme);
+        btnTheme.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(SettingsActivity.this, ThemeSelectorActivity.class);
+                startActivity(intent);
+            }
         });
 
         LinearLayout sectionNotification = findViewById(R.id.section_notification);

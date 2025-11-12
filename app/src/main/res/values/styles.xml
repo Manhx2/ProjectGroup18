@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Base app theme (MaterialComponents recommended) -->
+    <style name="Theme.MyApp.Base" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Các attribute chung (font, shapes...) -->
+        <item name="android:statusBarColor">@color/theme1_primary</item> <!-- will be overridden -->
+    </style>
+
+    <!-- Theme 1 -->
+    <style name="Theme.MyApp.Theme1" parent="Theme.MyApp.Base">
+        <item name="colorPrimary">@color/theme1_primary</item>
+        <item name="colorSecondary">@color/theme1_secondary</item>
+        <item name="colorTertiary">@color/theme1_tertiary</item>
+        <item name="colorAccent">@color/theme1_accent</item>
+    </style>
+
+    <!-- Theme 2 -->
+    <style name="Theme.MyApp.Theme2" parent="Theme.MyApp.Base">
+        <item name="colorPrimary">@color/theme2_primary</item>
+        <item name="colorSecondary">@color/theme2_secondary</item>
+        <item name="colorTertiary">@color/theme2_tertiary</item>
+        <item name="colorAccent">@color/theme2_accent</item>
+    </style>
+
+    <!-- Theme 3 -->
+    <style name="Theme.MyApp.Theme3" parent="Theme.MyApp.Base">
+        <item name="colorPrimary">@color/theme3_primary</item>
+        <item name="colorSecondary">@color/theme3_secondary</item>
+        <item name="colorTertiary">@color/theme3_tertiary</item>
+        <item name="colorAccent">@color/theme3_accent</item>
+    </style>
+</resources>

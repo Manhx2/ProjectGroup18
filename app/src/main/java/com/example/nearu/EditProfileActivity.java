@@ -25,7 +25,7 @@ import com.google.firebase.storage.StorageReference;
 import java.util.HashMap;
 import java.util.Map;
 
-public class EditProfileActivity extends AppCompatActivity {
+public class EditProfileActivity extends BaseActivity {
 
     private static final int PICK_IMAGE_REQUEST = 1;
     private Button btnUploadPRFImage, btnSave;

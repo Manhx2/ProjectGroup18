@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
+    android:background="?attr/colorPrimary"
     android:padding="16dp">
 
     <RelativeLayout
@@ -26,7 +26,7 @@
             android:text="Cài đặt"
             android:layout_centerInParent="true"
             android:textStyle="bold"
-            android:textColor="@color/colorAccent"
+            android:textColor="?attr/colorAccent"
             android:textSize="25sp" />
 
     </RelativeLayout>
@@ -57,7 +57,7 @@
                     android:layout_height="wrap_content"
                     android:text="Tài khoản"
                     android:textStyle="bold"
-                    android:textColor="@color/colorAccent"
+                    android:textColor="?attr/colorAccent"
                     android:textSize="18sp" />
             </LinearLayout>
 
@@ -77,7 +77,7 @@
                     android:text="Thông tin cá nhân"
                     android:textSize="16sp"
                     android:paddingVertical="8dp"
-                    android:textColor="@color/colorAccent"
+                    android:textColor="?attr/colorAccent"
                     android:clickable="true"/>
 
                 <TextView
@@ -88,14 +88,14 @@
                     android:text="Bảo mật"
                     android:textSize="16sp"
                     android:paddingVertical="8dp"
-                    android:textColor="@color/colorAccent"
+                    android:textColor="?attr/colorAccent"
                     android:clickable="true"/>
             </LinearLayout>
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@color/colorSecondary"
+                android:background="?attr/colorSecondary"
                 android:layout_marginVertical="5dp"/>
 
             <LinearLayout
@@ -113,7 +113,7 @@
                     android:layout_height="wrap_content"
                     android:text="Quyền riêng tư và Vị trí"
                     android:textStyle="bold"
-                    android:textColor="@color/colorAccent"
+                    android:textColor="?attr/colorAccent"
                     android:textSize="18sp" />
             </LinearLayout>
 
@@ -133,7 +133,7 @@
                     android:text="Cập nhật vị trí"
                     android:textSize="16sp"
                     android:paddingVertical="8dp"
-                    android:textColor="@color/colorAccent"
+                    android:textColor="?attr/colorAccent"
                     android:clickable="true"/>
 
                 <LinearLayout
@@ -150,7 +150,7 @@
                         android:text="Bật / tắt chia sẻ vị trí"
                         android:textSize="16sp"
                         android:paddingVertical="8dp"
-                        android:textColor="@color/colorAccent" />
+                        android:textColor="?attr/colorAccent" />
 
                     <Switch
                         android:id="@+id/switch_location_sharing"
@@ -169,7 +169,7 @@
                     android:text="Ẩn vị trí với người dùng cụ thể"
                     android:textSize="16sp"
                     android:paddingVertical="8dp"
-                    android:textColor="@color/colorAccent"
+                    android:textColor="?attr/colorAccent"
                     android:clickable="true"/>
 
                 <LinearLayout
@@ -188,14 +188,14 @@
                         android:text="Ai có thể gửi lời mời kết bạn"
                         android:textSize="16sp"
                         android:paddingVertical="8dp"
-                        android:textColor="@color/colorAccent" />
+                        android:textColor="?attr/colorAccent" />
 
                     <TextView
                         android:id="@+id/tv_friend_request_selected"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Bất kỳ ai"
-                        android:textColor="@color/colorSecondary"
+                        android:textColor="?attr/colorSecondary"
                         android:textSize="16sp" />
                 </LinearLayout>
 
@@ -207,14 +207,14 @@
                     android:text="Danh sách chặn"
                     android:textSize="16sp"
                     android:paddingVertical="8dp"
-                    android:textColor="@color/colorAccent"
+                    android:textColor="?attr/colorAccent"
                     android:clickable="true"/>
             </LinearLayout>
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@color/colorSecondary"
+                android:background="?attr/colorSecondary"
                 android:layout_marginVertical="5dp"/>
 
             <LinearLayout
@@ -232,7 +232,7 @@
                     android:layout_height="wrap_content"
                     android:text="Giao diện và Chủ đề"
                     android:textStyle="bold"
-                    android:textColor="@color/colorAccent"
+                    android:textColor="?attr/colorAccent"
                     android:textSize="18sp" />
             </LinearLayout>
 
@@ -260,26 +260,26 @@
                         android:text="Ngôn ngữ"
                         android:textSize="16sp"
                         android:paddingVertical="8dp"
-                        android:textColor="@color/colorAccent" />
+                        android:textColor="?attr/colorAccent" />
 
                     <TextView
                         android:id="@+id/tv_language_selected"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Tiếng Việt"
-                        android:textColor="@color/colorSecondary"
+                        android:textColor="?attr/colorSecondary"
                         android:textSize="16sp" />
                 </LinearLayout>
 
                 <TextView
-                    android:id="@+id/tv_toggle_mode"
+                    android:id="@+id/tv_theme"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:focusable="true"
                     android:text="Chủ đề"
                     android:textSize="16sp"
                     android:paddingVertical="8dp"
-                    android:textColor="@color/colorAccent"
+                    android:textColor="?attr/colorAccent"
                     android:clickable="true" />
 
                 <LinearLayout
@@ -296,7 +296,7 @@
                         android:text="Hiển thị tên bạn bè"
                         android:textSize="16sp"
                         android:paddingVertical="8dp"
-                        android:textColor="@color/colorAccent" />
+                        android:textColor="?attr/colorAccent" />
 
                     <Switch
                         android:id="@+id/switch_friend_name"
@@ -311,7 +311,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@color/colorSecondary"
+                android:background="?attr/colorSecondary"
                 android:layout_marginVertical="5dp"/>
 
             <LinearLayout
@@ -329,7 +329,7 @@
                     android:layout_height="wrap_content"
                     android:text="Thông báo"
                     android:textStyle="bold"
-                    android:textColor="@color/colorAccent"
+                    android:textColor="?attr/colorAccent"
                     android:textSize="18sp" />
             </LinearLayout>
 
@@ -355,7 +355,7 @@
                         android:text="Khi có lời mời kết bạn mới"
                         android:textSize="16sp"
                         android:paddingVertical="8dp"
-                        android:textColor="@color/colorAccent" />
+                        android:textColor="?attr/colorAccent" />
 
                     <Switch
                         android:id="@+id/switch_friend_inv"
@@ -380,7 +380,7 @@
                         android:text="Khi bạn bè ở gần"
                         android:textSize="16sp"
                         android:paddingVertical="8dp"
-                        android:textColor="@color/colorAccent" />
+                        android:textColor="?attr/colorAccent" />
 
                     <Switch
                         android:id="@+id/switch_friend_nearby"
@@ -395,7 +395,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@color/colorSecondary"
+                android:background="?attr/colorSecondary"
                 android:layout_marginVertical="5dp"/>
 
             <LinearLayout
@@ -413,7 +413,7 @@
                     android:layout_height="wrap_content"
                     android:text="Hỗ trợ"
                     android:textStyle="bold"
-                    android:textColor="@color/colorAccent"
+                    android:textColor="?attr/colorAccent"
                     android:textSize="18sp" />
             </LinearLayout>
 
@@ -433,7 +433,7 @@
                     android:text="Trung tâm trợ giúp"
                     android:textSize="16sp"
                     android:paddingVertical="8dp"
-                    android:textColor="@color/colorAccent"
+                    android:textColor="?attr/colorAccent"
                     android:clickable="true"/>
 
                 <TextView
@@ -444,7 +444,7 @@
                     android:text="Câu hỏi thường gặp"
                     android:textSize="16sp"
                     android:paddingVertical="8dp"
-                    android:textColor="@color/colorAccent"
+                    android:textColor="?attr/colorAccent"
                     android:clickable="true"/>
 
                 <TextView
@@ -455,7 +455,7 @@
                     android:text="Báo lỗi"
                     android:textSize="16sp"
                     android:paddingVertical="8dp"
-                    android:textColor="@color/colorAccent"
+                    android:textColor="?attr/colorAccent"
                     android:clickable="true"/>
 
                 <TextView
@@ -466,14 +466,14 @@
                     android:text="Chi tiết ứng dụng"
                     android:textSize="16sp"
                     android:paddingVertical="8dp"
-                    android:textColor="@color/colorAccent"
+                    android:textColor="?attr/colorAccent"
                     android:clickable="true"/>
             </LinearLayout>
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@color/colorSecondary"
+                android:background="?attr/colorSecondary"
                 android:layout_marginVertical="5dp"/>
         </LinearLayout>
     </ScrollView>
