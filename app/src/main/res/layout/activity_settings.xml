@@ -218,6 +218,103 @@
                 android:layout_marginVertical="5dp"/>
 
             <LinearLayout
+                android:id="@+id/section_theme"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingVertical="10dp"
+                android:clickable="true"
+                android:focusable="true" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Giao diện và Chủ đề"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="18sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/theme_submenu"
+                android:orientation="vertical"
+                android:layout_marginStart="24dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:id="@+id/tv_language"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:focusable="true"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:clickable="true" >
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Ngôn ngữ"
+                        android:textSize="16sp"
+                        android:paddingVertical="8dp"
+                        android:textColor="@color/colorAccent" />
+
+                    <TextView
+                        android:id="@+id/tv_language_selected"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Tiếng Việt"
+                        android:textColor="@color/colorSecondary"
+                        android:textSize="16sp" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tv_toggle_mode"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:focusable="true"
+                    android:text="Chủ đề"
+                    android:textSize="16sp"
+                    android:paddingVertical="8dp"
+                    android:textColor="@color/colorAccent"
+                    android:clickable="true" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:id="@+id/tv_toggle_friend_name"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Hiển thị tên bạn bè"
+                        android:textSize="16sp"
+                        android:paddingVertical="8dp"
+                        android:textColor="@color/colorAccent" />
+
+                    <Switch
+                        android:id="@+id/switch_friend_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="true"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorSecondary"
+                android:layout_marginVertical="5dp"/>
+
+            <LinearLayout
                 android:id="@+id/section_notification"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -378,7 +475,7 @@
                 android:layout_height="1dp"
                 android:background="@color/colorSecondary"
                 android:layout_marginVertical="5dp"/>
-
         </LinearLayout>
     </ScrollView>
+
 </RelativeLayout>
