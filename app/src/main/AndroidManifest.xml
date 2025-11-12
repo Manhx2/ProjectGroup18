@@ -44,6 +44,9 @@
             android:name=".ForgotPasswordActivity"
             android:exported="true" />
 
+        <activity
+            android:name=".FriendActivity"
+            android:exported="true" />
     </application>
 
 </manifest>
