@@ -28,7 +28,6 @@
             android:textStyle="bold"
             android:textColor="@color/colorAccent"
             android:textSize="25sp" />
-
     </RelativeLayout>
 
     <ScrollView
@@ -51,7 +50,7 @@
                 android:textSize="18sp"/>
 
             <EditText
-                android:id="@+id/editTextName"
+                android:id="@+id/editName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
@@ -150,7 +149,7 @@
                 android:textSize="18sp"/>
 
             <EditText
-                android:id="@+id/editTextBio"
+                android:id="@+id/editBio"
                 android:layout_width="match_parent"
                 android:layout_height="140dp"
                 android:layout_marginTop="5dp"

@@ -51,7 +51,7 @@ public class FriendActivity extends AppCompatActivity {
 
         View.OnClickListener listener = v -> {
             resetTabs();
-            v.setBackgroundColor(Color.parseColor("#DDDDDD"));
+            v.setBackgroundColor(Color.parseColor("#456882"));
         };
 
         tabOnline.setOnClickListener(listener);
@@ -60,9 +60,9 @@ public class FriendActivity extends AppCompatActivity {
     }
 
     private void resetTabs() {
-        tabOnline.setBackgroundColor(Color.parseColor("#EEEEEE"));
-        tabAll.setBackgroundColor(Color.parseColor("#EEEEEE"));
-        tabAdd.setBackgroundColor(Color.parseColor("#EEEEEE"));
+        tabOnline.setBackgroundColor(Color.parseColor("#1B3C53"));
+        tabAll.setBackgroundColor(Color.parseColor("#1B3C53"));
+        tabAdd.setBackgroundColor(Color.parseColor("#1B3C53"));
     }
 }
 

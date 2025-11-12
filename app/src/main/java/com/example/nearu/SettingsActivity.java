@@ -72,7 +72,7 @@ public class SettingsActivity extends AppCompatActivity {
                     case 1:
                         selectedText.setText("Bạn của bạn bè");
                         break;
-                    default:
+                    case 2:
                         selectedText.setText("Không cho phép");
                         break;
                 }
@@ -80,6 +80,46 @@ public class SettingsActivity extends AppCompatActivity {
             });
             builder.setNegativeButton("Hủy", null);
             builder.show();
+        });
+
+        LinearLayout sectionTheme = findViewById(R.id.section_theme);
+        LinearLayout themeSubmenu = findViewById(R.id.theme_submenu);
+        sectionTheme.setOnClickListener(v -> {
+            if (themeSubmenu.getVisibility() == View.GONE) {
+                themeSubmenu.setVisibility(View.VISIBLE);
+            } else {
+                themeSubmenu.setVisibility(View.GONE);
+            }
+        });
+
+        LinearLayout languageLayout = findViewById(R.id.tv_language);
+        TextView selectedLanguage = findViewById(R.id.tv_language_selected);
+        languageLayout.setOnClickListener(v -> {
+            final String[] options = {
+                    "Tiếng Việt",
+                    "Tiếng Anh"
+            };
+
+            final int[] selectedLanguageIndex = {0};
+
+            AlertDialog.Builder languageBuilder = new AlertDialog.Builder(this);
+            languageBuilder.setTitle("Ngôn ngữ");
+            languageBuilder.setSingleChoiceItems(options, selectedLanguageIndex[0], (dialog, which) -> {
+                selectedLanguageIndex[0] = which;
+            });
+            languageBuilder.setPositiveButton("OK", (dialog, which) -> {
+                switch (selectedLanguageIndex[0]) {
+                    case 0:
+                        selectedLanguage.setText("Tiếng Việt");
+                        break;
+                    case 1:
+                        selectedLanguage.setText("Tiếng Anh");
+                        break;
+                }
+                dialog.dismiss();
+            });
+            languageBuilder.setNegativeButton("Hủy", null);
+            languageBuilder.show();
         });
 
         LinearLayout sectionNotification = findViewById(R.id.section_notification);
