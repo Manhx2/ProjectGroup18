@@ -51,7 +51,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="Trực tiến"
+            android:text="Trực tuyến"
             android:textColor="@color/colorPrimary"
             android:textStyle="bold"
             android:background="#EEEEEE"/>

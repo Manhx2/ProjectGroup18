@@ -136,7 +136,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if (itemId == R.id.nav_profile) {
             startActivity(new Intent(this, ProfileActivity.class));
         } else if (itemId == R.id.nav_friends) {
-            Toast.makeText(this, "Chức năng Bạn bè!", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(this, FriendActivity.class));
         } else if (itemId == R.id.nav_settings) {
             startActivity(new Intent(this, SettingsActivity.class));
         } else if (itemId == R.id.nav_logout) {
