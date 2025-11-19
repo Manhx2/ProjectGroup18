@@ -54,7 +54,6 @@ public class ProfileActivity extends BaseActivity {
         txtBio = findViewById(R.id.userBio);
         avatarImage = findViewById(R.id.userAvatar);
 
-        // Khởi tạo Firebase
         user = FirebaseAuth.getInstance().getCurrentUser();
         db = FirebaseFirestore.getInstance();
 
@@ -70,15 +69,19 @@ public class ProfileActivity extends BaseActivity {
                     if (document.exists()) {
                         String name = document.getString("name");
                         String bio = document.getString("bio");
-                        String imageUrl = document.getString("imageUrl");
+                        String imgBase64 = document.getString("imageBase64");
 
                         txtName.setText(name != null ? name : "Chưa đặt tên");
                         txtBio.setText(bio != null ? bio : "Chưa có tiểu sử");
 
-                        if (imageUrl != null && !imageUrl.isEmpty()) {
-                            Glide.with(this)
-                                    .load(imageUrl)
-                                    .into(avatarImage);
+                        if (imgBase64 != null && !imgBase64.isEmpty()) {
+                            try {
+                                byte[] bytes = android.util.Base64.decode(imgBase64, android.util.Base64.DEFAULT);
+                                android.graphics.Bitmap bitmap = android.graphics.BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+                                avatarImage.setImageBitmap(bitmap);
+                            } catch (Exception e) {
+                                avatarImage.setImageResource(R.drawable.default_avatar);
+                            }
                         } else {
                             avatarImage.setImageResource(R.drawable.default_avatar);
                         }

@@ -16,15 +16,15 @@
     <color name="theme1_accent">#D2C1B6</color>
 
     <!-- Theme 2 -->
-    <color name="theme2_primary">#F4E7E1</color>
-    <color name="theme2_secondary">#FF9B45</color>
-    <color name="theme2_tertiary">#D5451B</color>
-    <color name="theme2_accent">#521C0D</color>
+    <color name="theme2_primary">#DAF2D0</color>
+    <color name="theme2_secondary">#8ED973</color>
+    <color name="theme2_tertiary">#12501A</color>
+    <color name="theme2_accent">#0D3512</color>
 
     <!-- Theme 3 -->
-    <color name="theme3_primary">#FFDAB3</color>
-    <color name="theme3_secondary">#C8AAAA</color>
-    <color name="theme3_tertiary">#9F8383</color>
-    <color name="theme3_accent">#574964</color>
+    <color name="theme3_primary">#FFEBEB</color>
+    <color name="theme3_secondary">#FFD6D6</color>
+    <color name="theme3_tertiary">#FFADAD</color>
+    <color name="theme3_accent">#FF9999</color>
 </resources>
 

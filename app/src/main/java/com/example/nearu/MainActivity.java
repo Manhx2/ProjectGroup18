@@ -7,7 +7,10 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.util.TypedValue;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.graphics.Bitmap;
@@ -28,6 +31,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import org.osmdroid.config.Configuration;
 import org.osmdroid.tileprovider.tilesource.TileSourceFactory;
@@ -71,7 +75,11 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
                 R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
-        toggle.getDrawerArrowDrawable().setColor(getResources().getColor(R.color.colorAccent));
+
+        TypedValue typedValue = new TypedValue();
+        getTheme().resolveAttribute(androidx.appcompat.R.attr.colorAccent, typedValue, true);
+        int icMenuColor = typedValue.data;
+        toggle.getDrawerArrowDrawable().setColor(icMenuColor);
 
         requestPermissionsIfNecessary(new String[]{
                 Manifest.permission.ACCESS_FINE_LOCATION,
@@ -118,16 +126,16 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
             goToLogin();
         } else {
             String email = currentUser.getEmail();
-
-            NavigationView navigationView = findViewById(R.id.nav_view);
-            TextView headerEmail = navigationView.getHeaderView(0).findViewById(R.id.nav_header_email);
-            headerEmail.setText(email);
-
             // Lưu email vào SharedPreferences để dùng ở Activity khác
             SharedPreferences prefs = getSharedPreferences("UserData", MODE_PRIVATE);
             SharedPreferences.Editor editor = prefs.edit();
             editor.putString("user_email", email);
             editor.apply();
+
+            NavigationView navigationView = findViewById(R.id.nav_view);
+            TextView headerEmail = navigationView.getHeaderView(0).findViewById(R.id.nav_header_email);
+            headerEmail.setText(email);
+            loadUserProfile();
         }
     }
 
@@ -175,6 +183,8 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
     protected void onResume() {
         super.onResume();
         map.onResume();
+
+        clearSelection();
     }
 
     @Override
@@ -213,5 +223,48 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
                     permissionsToRequest.toArray(new String[0]),
                     REQUEST_PERMISSIONS_REQUEST_CODE);
         }
+    }
+
+    private void clearSelection() {
+        NavigationView nav = findViewById(R.id.nav_view);
+        for (int i = 0; i < nav.getMenu().size(); i++) {
+            nav.getMenu().getItem(i).setChecked(false);
+        }
+    }
+
+    private void loadUserProfile() {
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        View headerView = navigationView.getHeaderView(0);
+        TextView txtName = headerView.findViewById(R.id.nav_header_name);
+        ImageView avatarImage = headerView.findViewById(R.id.nav_header_avatar);
+
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+        db.collection("users").document(user.getUid())
+                .get()
+                .addOnSuccessListener(document -> {
+                    if (document.exists()) {
+                        String name = document.getString("name");
+                        String imgBase64 = document.getString("imageBase64");
+
+                        txtName.setText(name != null ? name : "Chưa đặt tên");
+
+                        if (imgBase64 != null && !imgBase64.isEmpty()) {
+                            try {
+                                byte[] bytes = android.util.Base64.decode(imgBase64, android.util.Base64.DEFAULT);
+                                android.graphics.Bitmap bitmap = android.graphics.BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+                                avatarImage.setImageBitmap(bitmap);
+                            } catch (Exception e) {
+                                avatarImage.setImageResource(R.drawable.default_avatar);
+                            }
+                        } else {
+                            avatarImage.setImageResource(R.drawable.default_avatar);
+                        }
+                    }
+                })
+                .addOnFailureListener(e ->
+                        Toast.makeText(this, "Lỗi tải dữ liệu: " + e.getMessage(), Toast.LENGTH_SHORT).show()
+                );
     }
 }
