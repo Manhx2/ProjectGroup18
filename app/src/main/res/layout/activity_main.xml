@@ -34,11 +34,11 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        android:background="?attr/colorAccent"
+        android:background="?attr/colorPrimary"
         app:headerLayout="@layout/nav_header"
         app:menu="@menu/drawer_menu"
         app:itemTextColor="@color/nav_text_color"
-        app:itemBackground="@drawable/nav_item_background"
+        app:itemBackground="@color/nav_item_bg_color"
         app:itemIconTint="@color/nav_icon_color"/>
 
 </androidx.drawerlayout.widget.DrawerLayout>

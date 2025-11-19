@@ -1,8 +1,11 @@
 package com.example.nearu;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Base64;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -16,12 +19,16 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.bumptech.glide.Glide;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.SetOptions;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
+import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -36,6 +43,9 @@ public class EditProfileActivity extends BaseActivity {
 
     EditText edtName, edtBio;
     FirebaseUser user;
+    ImageView imgPreview;
+
+    private String imageBase64 = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,8 +61,7 @@ public class EditProfileActivity extends BaseActivity {
         });
 
         btnUploadPRFImage = findViewById(R.id.btnUploadPRFImage);
-        btnSave = findViewById(R.id.btnSave);
-
+        imgPreview = findViewById(R.id.imgPreview);
         edtName = findViewById(R.id.editName);
         edtBio = findViewById(R.id.editBio);
         btnSave = findViewById(R.id.btnSave);
@@ -68,16 +77,7 @@ public class EditProfileActivity extends BaseActivity {
             loadUserProfile();
         }
 
-        btnSave.setOnClickListener(v -> {
-            // Upload Tên / Bio
-            String name = edtName.getText().toString().trim();
-            String bio = edtBio.getText().toString().trim();
-            saveUserProfile(name, bio);
-            // Upload Avatar
-            if (imageUri != null) {
-                uploadImageToFirebase();
-            }
-        });
+        btnSave.setOnClickListener(v -> saveUserProfile());
     }
     private void openFileChooser() {
         Intent intent = new Intent();
@@ -92,48 +92,43 @@ public class EditProfileActivity extends BaseActivity {
 
         if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
             imageUri = data.getData();
+            imgPreview.setImageURI(imageUri);
+
+            try {
+                InputStream is = getContentResolver().openInputStream(imageUri);
+                Bitmap bitmap = BitmapFactory.decodeStream(is);
+
+                // Nén ảnh sang Base64
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                bitmap.compress(Bitmap.CompressFormat.JPEG, 60, baos);
+                byte[] bytes = baos.toByteArray();
+
+                imageBase64 = Base64.encodeToString(bytes, Base64.DEFAULT);
+
+            } catch (Exception e) {
+                Toast.makeText(this, "Lỗi đọc ảnh: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+            }
         }
     }
 
-    private void uploadImageToFirebase() {
-        FirebaseUser user = auth.getCurrentUser();
-        if (user == null) return;
-
+    private void saveUserProfile() {
+        String name = edtName.getText().toString().trim();
+        String bio = edtBio.getText().toString().trim();
         String userId = user.getUid();
-        StorageReference fileRef = storage.getReference("users/" + userId + "/profile.jpg");
 
-        fileRef.putFile(imageUri)
-                .addOnSuccessListener(taskSnapshot -> fileRef.getDownloadUrl()
-                        .addOnSuccessListener(uri -> {
-                            String imageUrl = uri.toString();
-                            saveUserInfoToFirestore(userId, imageUrl);
-                        }))
-                .addOnFailureListener(e ->
-                        Toast.makeText(this, "Tải ảnh thất bại!", Toast.LENGTH_SHORT).show());
-    }
-
-    private void saveUserInfoToFirestore(String userId, String imageUrl) {
-        Map<String, Object> userInfo = new HashMap<>();
-        userInfo.put("imageUrl", imageUrl);
-
-        db.collection("users").document(userId)
-                .set(userInfo)
-                .addOnSuccessListener(aVoid ->
-                        Toast.makeText(this, "Đã lưu thông tin!", Toast.LENGTH_SHORT).show())
-                .addOnFailureListener(e ->
-                        Toast.makeText(this, "Lỗi khi lưu!", Toast.LENGTH_SHORT).show());
-    }
-
-    private void saveUserProfile(String name, String bio) {
         Map<String, Object> profile = new HashMap<>();
         profile.put("name", name);
         profile.put("bio", bio);
 
-        db.collection("users").document(user.getUid())
-                .set(profile)
-                .addOnSuccessListener(aVoid -> {
-                    Toast.makeText(this, "Đã lưu!", Toast.LENGTH_SHORT).show();
-                })
+        if (imageBase64 != null) {
+            profile.put("imageBase64", imageBase64);
+        }
+
+        db.collection("users").document(userId)
+                .set(profile, SetOptions.merge())
+                .addOnSuccessListener(aVoid ->
+                        Toast.makeText(this, "Đã lưu!", Toast.LENGTH_SHORT).show()
+                )
                 .addOnFailureListener(e ->
                         Toast.makeText(this, "Lỗi khi lưu: " + e.getMessage(), Toast.LENGTH_SHORT).show()
                 );
@@ -146,9 +141,20 @@ public class EditProfileActivity extends BaseActivity {
                     if (document.exists()) {
                         String name = document.getString("name");
                         String bio = document.getString("bio");
+                        String imgB64 = document.getString("imageBase64");
 
                         edtName.setText(name != null ? name : "");
                         edtBio.setText(bio != null ? bio : "");
+
+                        if (imgB64 != null && !imgB64.isEmpty()) {
+                            try {
+                                byte[] bytes = Base64.decode(imgB64, Base64.DEFAULT);
+                                Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+                                imgPreview.setImageBitmap(bitmap);
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                        }
                     }
                 })
                 .addOnFailureListener(e ->
