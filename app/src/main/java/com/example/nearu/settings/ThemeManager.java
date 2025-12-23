@@ -1,6 +1,8 @@
-package com.example.nearu;
+package com.example.nearu.settings;
 
 import android.content.Context;
+
+import com.example.nearu.R;
 
 public class ThemeManager {
     private static final String PREFS = "theme_prefs";

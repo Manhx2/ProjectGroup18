@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp"
+    android:background="?attr/colorPrimary"
     tools:context=".RegisterActivity">
 
     <EditText
@@ -12,6 +13,8 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:hint="Email"
+        android:textColorHint="?attr/colorSecondary"
+        android:textColor="?attr/colorAccent"
         android:inputType="textEmailAddress"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -25,6 +28,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:hint="Mật khẩu"
+        android:textColorHint="?attr/colorSecondary"
+        android:textColor="?attr/colorAccent"
         android:inputType="textPassword"
         app:layout_constraintTop_toBottomOf="@id/editTextEmail"
         app:layout_constraintStart_toStartOf="parent"
@@ -37,6 +42,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:hint="Xác nhận mật khẩu"
+        android:textColorHint="?attr/colorSecondary"
+        android:textColor="?attr/colorAccent"
         android:inputType="textPassword"
         app:layout_constraintTop_toBottomOf="@id/editTextPassword"
         app:layout_constraintStart_toStartOf="parent"
@@ -49,6 +56,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="Đăng ký"
+        android:backgroundTint="?attr/colorSecondary"
+        android:textColor="?attr/colorAccent"
         app:layout_constraintTop_toBottomOf="@id/editTextConfirmPassword"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

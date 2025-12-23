@@ -26,6 +26,8 @@ import android.location.Location;
 
 import com.example.nearu.friend.FriendActivity;
 import com.example.nearu.noti.NotificationActivity;
+import com.example.nearu.profile.ProfileActivity;
+import com.example.nearu.settings.SettingsActivity;
 import com.google.firebase.database.ServerValue;
 
 import com.google.android.material.navigation.NavigationView;
@@ -137,6 +139,8 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
             NavigationView navigationView = findViewById(R.id.nav_view);
             TextView headerEmail = navigationView.getHeaderView(0).findViewById(R.id.nav_header_email);
             headerEmail.setText(email);
+
+            ensureUserFields();
             loadUserProfile();
         }
     }
@@ -162,7 +166,6 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
 
             goToLogin();
         }
-
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;
     }
@@ -270,5 +273,26 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
                 .addOnFailureListener(e ->
                         Toast.makeText(this, "Lỗi tải dữ liệu: " + e.getMessage(), Toast.LENGTH_SHORT).show()
                 );
+    }
+
+    private void ensureUserFields() {
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user == null) return;
+
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+        db.collection("users").document(user.getUid())
+                .get()
+                .addOnSuccessListener(doc -> {
+                    if (!doc.contains("friends")) {
+                        doc.getReference().update("friends", new ArrayList<>());
+                    }
+                    if (!doc.contains("friendRequests")) {
+                        doc.getReference().update("friendRequests", new ArrayList<>());
+                    }
+                    if (!doc.contains("online")) {
+                        doc.getReference().update("online", false);
+                    }
+                });
     }
 }

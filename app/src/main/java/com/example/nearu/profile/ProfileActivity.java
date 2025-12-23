@@ -1,4 +1,4 @@
-package com.example.nearu;
+package com.example.nearu.profile;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -9,9 +9,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import com.bumptech.glide.Glide;
+import com.example.nearu.BaseActivity;
+import com.example.nearu.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -19,7 +18,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 public class ProfileActivity extends BaseActivity {
 
     TextView txtName, txtBio;
-    ImageView avatarImage;
+    ImageView avatarImage, imgGender;
     FirebaseFirestore db;
     FirebaseUser user;
 
@@ -53,6 +52,7 @@ public class ProfileActivity extends BaseActivity {
         txtName = findViewById(R.id.userName);
         txtBio = findViewById(R.id.userBio);
         avatarImage = findViewById(R.id.userAvatar);
+        imgGender = findViewById(R.id.imgGender);
 
         user = FirebaseAuth.getInstance().getCurrentUser();
         db = FirebaseFirestore.getInstance();
@@ -84,6 +84,25 @@ public class ProfileActivity extends BaseActivity {
                             }
                         } else {
                             avatarImage.setImageResource(R.drawable.default_avatar);
+                        }
+
+                        String gender = document.getString("gender");
+                        if (gender != null) {
+                            imgGender.setVisibility(View.VISIBLE);
+
+                            switch (gender) {
+                                case "male":
+                                    imgGender.setImageResource(R.drawable.ic_male);
+                                    break;
+                                case "female":
+                                    imgGender.setImageResource(R.drawable.ic_female);
+                                    break;
+                                case "other":
+                                    imgGender.setImageResource(R.drawable.ic_question_mark);
+                                    break;
+                            }
+                        } else {
+                            imgGender.setVisibility(View.GONE);
                         }
                     }
                 })

@@ -1,4 +1,4 @@
-package com.example.nearu;
+package com.example.nearu.profile;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -12,20 +12,15 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
-import com.bumptech.glide.Glide;
+import com.example.nearu.BaseActivity;
+import com.example.nearu.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.SetOptions;
 import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
 
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
@@ -39,7 +34,6 @@ public class EditProfileActivity extends BaseActivity {
     private Uri imageUri;
     private FirebaseStorage storage;
     private FirebaseFirestore db;
-    private FirebaseAuth auth;
 
     EditText edtName, edtBio;
     FirebaseUser user;
@@ -68,7 +62,6 @@ public class EditProfileActivity extends BaseActivity {
 
         storage = FirebaseStorage.getInstance();
         db = FirebaseFirestore.getInstance();
-        auth = FirebaseAuth.getInstance();
         user = FirebaseAuth.getInstance().getCurrentUser();
 
         btnUploadPRFImage.setOnClickListener(v -> openFileChooser());

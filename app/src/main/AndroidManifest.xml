@@ -20,16 +20,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.NearU">
         <activity
-            android:name=".ThemeSelectorActivity"
+            android:name=".settings.AccountActivity"
             android:exported="false" />
         <activity
-            android:name=".SettingsActivity"
+            android:name=".settings.ThemeSelectorActivity"
             android:exported="false" />
         <activity
-            android:name=".EditProfileActivity"
+            android:name=".settings.SettingsActivity"
             android:exported="false" />
         <activity
-            android:name=".ProfileActivity"
+            android:name=".profile.EditProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".profile.ProfileActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
@@ -55,7 +58,6 @@
         <activity
             android:name=".noti.NotificationActivity"
             android:exported="true" />
-
     </application>
 
 </manifest>

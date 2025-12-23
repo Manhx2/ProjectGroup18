@@ -1,19 +1,16 @@
-package com.example.nearu;
+package com.example.nearu.settings;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
+
+import com.example.nearu.BaseActivity;
+import com.example.nearu.R;
 
 public class SettingsActivity extends BaseActivity {
 
@@ -122,6 +119,15 @@ public class SettingsActivity extends BaseActivity {
             });
             languageBuilder.setNegativeButton("Hủy", null);
             languageBuilder.show();
+        });
+
+        TextView btnAccount = findViewById(R.id.tv_account_info);
+        btnAccount.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(SettingsActivity.this, AccountActivity.class);
+                startActivity(intent);
+            }
         });
 
         TextView btnTheme = findViewById(R.id.tv_theme);
