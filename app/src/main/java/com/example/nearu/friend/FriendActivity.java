@@ -12,7 +12,7 @@ import android.view.View;
 
 import com.example.nearu.BaseActivity;
 import com.example.nearu.R;
-import com.example.nearu.settings.ThemeManager;
+import com.example.nearu.ThemeManager;
 
 import java.util.ArrayList;
 
