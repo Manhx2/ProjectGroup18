@@ -1,4 +1,4 @@
-package com.example.nearu;
+package com.example.nearu.noti;
 
 public class NotificationItem {
     public String id;

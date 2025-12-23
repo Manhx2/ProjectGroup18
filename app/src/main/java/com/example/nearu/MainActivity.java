@@ -17,13 +17,15 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import android.location.Location;
+
+import com.example.nearu.friend.FriendActivity;
+import com.example.nearu.noti.NotificationActivity;
 import com.google.firebase.database.ServerValue;
 
 import com.google.android.material.navigation.NavigationView;

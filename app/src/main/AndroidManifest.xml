@@ -50,10 +50,10 @@
             android:name=".ForgotPasswordActivity"
             android:exported="true" />
         <activity
-            android:name=".FriendActivity"
+            android:name=".friend.FriendActivity"
             android:exported="true" />
         <activity
-            android:name=".NotificationActivity"
+            android:name=".noti.NotificationActivity"
             android:exported="true" />
 
     </application>
