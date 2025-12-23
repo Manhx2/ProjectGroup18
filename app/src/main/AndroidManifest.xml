@@ -19,6 +19,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.NearU">
+
         <activity
             android:name=".settings.AccountActivity"
             android:exported="false" />
@@ -34,21 +35,29 @@
         <activity
             android:name=".profile.ProfileActivity"
             android:exported="false" />
+
         <activity
-            android:name=".MainActivity"
+            android:name=".SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity> <!-- Login Activity -->
+        </activity>
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true" />
+
+        <!-- Login Activity -->
         <activity
             android:name=".LoginActivity"
-            android:exported="true" /> <!-- Register Activity -->
+            android:exported="true" />
+        <!-- Register Activity -->
         <activity
             android:name=".RegisterActivity"
-            android:exported="true" /> <!-- Forgot Password Activity -->
+            android:exported="true" />
+        <!-- Forgot Password Activity -->
         <activity
             android:name=".ForgotPasswordActivity"
             android:exported="true" />
