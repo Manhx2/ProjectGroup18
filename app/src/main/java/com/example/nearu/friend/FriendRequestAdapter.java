@@ -66,6 +66,6 @@ public class FriendRequestAdapter extends RecyclerView.Adapter<FriendRequestAdap
 
     static class ViewHolder extends RecyclerView.ViewHolder {
         TextView tvName; ImageView btnAccept, btnReject;
-        ViewHolder(View v) { super(v); tvName = v.findViewById(R.id.tvName); btnAccept = v.findViewById(R.id.btnAccept); btnReject = v.findViewById(R.id.btnReject); }
+        ViewHolder(View v) { super(v); tvName = v.findViewById(R.id.txtName); btnAccept = v.findViewById(R.id.btnAccept); btnReject = v.findViewById(R.id.btnReject); }
     }
 }
