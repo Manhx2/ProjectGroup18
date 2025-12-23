@@ -4,22 +4,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="20dp"
-    android:background="@color/colorPrimary">
+    android:background="?attr/colorPrimary">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Kết bạn"
-        android:textSize="22sp"
-        android:textStyle="bold"
-        android:textColor="@color/colorAccent" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Nhập tên người dùng để gửi lời mời"
-        android:textColor="@color/colorSecondary"
+        android:text=" Nhập tên người dùng để gửi lời mời:"
+        android:paddingTop="20dp"
+        android:textSize="16sp"
+        android:textColor="?attr/colorAccent"
         android:layout_marginTop="8dp" />
 
     <EditText
@@ -27,7 +20,10 @@
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:hint="Tên người dùng"
-        android:background="@color/colorSecondary"
+        android:textColorHint="?attr/colorPrimary"
+        android:background="?attr/colorSecondary"
+        android:textColor="?attr/colorAccent"
+        android:textSize="16sp"
         android:padding="10dp"
         android:layout_marginTop="16dp" />
 
@@ -36,6 +32,9 @@
         android:layout_width="match_parent"
         android:layout_height="45dp"
         android:text="Gửi lời mời"
+        android:textSize="16sp"
+        android:backgroundTint="?attr/colorTertiary"
+        android:textColor="?attr/colorPrimary"
         android:textStyle="bold"
         android:layout_marginTop="16dp" />
 

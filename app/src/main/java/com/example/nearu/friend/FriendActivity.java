@@ -15,12 +15,15 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.nearu.BaseActivity;
 import com.example.nearu.R;
 import com.example.nearu.noti.NotificationHelper;
+import com.example.nearu.settings.ThemeManager;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class FriendActivity extends BaseActivity {
 
@@ -34,6 +37,7 @@ public class FriendActivity extends BaseActivity {
 
     private ArrayList<FriendRequest> requestList;
     private FriendRequestAdapter requestAdapter;
+    EditText searchBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +65,7 @@ public class FriendActivity extends BaseActivity {
     }
 
     private void initViews() {
+        searchBar = findViewById(R.id.searchBar);
         recyclerView = findViewById(R.id.rvFriends);
         tabOnline = findViewById(R.id.tabOnline);
         tabAll = findViewById(R.id.tabAll);
@@ -91,6 +96,7 @@ public class FriendActivity extends BaseActivity {
             int id = v.getId();
 
             // Mặc định hiện RecyclerView, ẩn Layout Add
+            searchBar.setVisibility(View.VISIBLE);
             recyclerView.setVisibility(View.VISIBLE);
             includeAddFriend.setVisibility(View.GONE);
 
@@ -105,6 +111,7 @@ public class FriendActivity extends BaseActivity {
                 recyclerView.setAdapter(requestAdapter);
                 loadFriendRequests();
             } else if (id == R.id.tabAdd) {
+                searchBar.setVisibility(View.GONE);
                 recyclerView.setVisibility(View.GONE);
                 includeAddFriend.setVisibility(View.VISIBLE);
             }
@@ -117,38 +124,54 @@ public class FriendActivity extends BaseActivity {
     }
 
     private void updateTabUI(TextView selectedTab) {
-        // Sử dụng ContextCompat để lấy màu từ R.color (Thay tên màu đúng của bạn)
-        int active = ContextCompat.getColor(this, R.color.colorSecondary);
-        int inactive = ContextCompat.getColor(this, R.color.colorPrimary);
+        int currentTheme = ThemeManager.getSavedTheme(this);
+        // Mặc định
+        int colorPrimary = ContextCompat.getColor(this, R.color.theme1_primary);
+        int colorSecondary = ContextCompat.getColor(this, R.color.theme1_secondary);
+        // Đổi theme
+        if (currentTheme == ThemeManager.THEME_1) {
+            colorPrimary = ContextCompat.getColor(this, R.color.theme1_primary);
+            colorSecondary = ContextCompat.getColor(this, R.color.theme1_secondary);
+        } else if (currentTheme == ThemeManager.THEME_2) {
+            colorPrimary = ContextCompat.getColor(this, R.color.theme2_primary);
+            colorSecondary = ContextCompat.getColor(this, R.color.theme2_secondary);
+        } else if (currentTheme == ThemeManager.THEME_3) {
+            colorPrimary = ContextCompat.getColor(this, R.color.theme3_primary);
+            colorSecondary = ContextCompat.getColor(this, R.color.theme3_secondary);
+        }
 
-        tabOnline.setBackgroundColor(inactive);
-        tabAll.setBackgroundColor(inactive);
-        tabRequests.setBackgroundColor(inactive);
-        tabAdd.setBackgroundColor(inactive);
+        tabOnline.setBackgroundColor(colorPrimary);
+        tabAll.setBackgroundColor(colorPrimary);
+        tabRequests.setBackgroundColor(colorPrimary);
+        tabAdd.setBackgroundColor(colorPrimary);
 
-        selectedTab.setBackgroundColor(active);
+        selectedTab.setBackgroundColor(colorSecondary);
     }
 
     private void loadFriendRequests() {
         String myId = FirebaseAuth.getInstance().getUid();
         if (myId == null) return;
 
-        FirebaseFirestore.getInstance().collection("friend_requests")
+        FirebaseFirestore.getInstance()
+                .collection("friend_requests")
                 .whereEqualTo("toId", myId)
                 .whereEqualTo("status", "pending")
                 .addSnapshotListener((value, error) -> {
-                    if (error != null) {
-                        Log.e("FirestoreError", error.getMessage());
-                        return;
-                    }
-                    if (value != null) {
-                        requestList.clear();
-                        for (DocumentSnapshot doc : value.getDocuments()) {
-                            FriendRequest req = doc.toObject(FriendRequest.class);
-                            if (req != null) requestList.add(req);
+                    if (error != null || value == null) return;
+
+                    // Map để loại trùng theo fromId
+                    Map<String, FriendRequest> uniqueMap = new HashMap<>();
+
+                    for (DocumentSnapshot doc : value.getDocuments()) {
+                        FriendRequest req = doc.toObject(FriendRequest.class);
+                        if (req != null && req.getFromId() != null) {
+                            uniqueMap.put(req.getFromId(), req); // ghi đè nếu trùng
                         }
-                        requestAdapter.notifyDataSetChanged();
                     }
+
+                    requestList.clear();
+                    requestList.addAll(uniqueMap.values());
+                    requestAdapter.notifyDataSetChanged();
                 });
     }
 
