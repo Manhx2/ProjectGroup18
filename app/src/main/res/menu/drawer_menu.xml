@@ -13,6 +13,10 @@
             android:icon="@drawable/ic_friends"
             android:title="Bạn bè" />
         <item
+            android:id="@+id/nav_notification"
+            android:icon="@drawable/ic_noti"
+            android:title="Thông báo" />
+        <item
             android:id="@+id/nav_settings"
             android:icon="@drawable/ic_settings"
             android:title="Cài đặt" />

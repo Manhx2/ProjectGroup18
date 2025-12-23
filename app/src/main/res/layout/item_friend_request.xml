@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="12dp"
+    android:gravity="center_vertical">
+
+    <!-- Avatar -->
+    <ImageView
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:src="@drawable/default_avatar"
+        android:contentDescription="Avatar user"
+        android:layout_marginEnd="12dp"/>
+
+    <!-- Tên -->
+    <TextView
+        android:id="@+id/txtName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Username"
+        android:textSize="16sp"
+        android:textColor="#000000"/>
+
+    <!-- Accept -->
+    <ImageView
+        android:id="@+id/btnAccept"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:padding="12dp"
+        android:src="@drawable/ic_btn_accept"
+        android:contentDescription="Chấp nhận lời mời kết bạn"
+        android:clickable="true"
+        android:focusable="true"/>
+
+    <!-- Reject -->
+    <ImageView
+        android:id="@+id/btnReject"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:padding="12dp"
+        android:src="@drawable/ic_btn_reject"
+        android:contentDescription="Từ chối lời mời kết bạn"
+        android:clickable="true"
+        android:focusable="true"/>
+
+</LinearLayout>

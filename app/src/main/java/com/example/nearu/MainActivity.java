@@ -146,6 +146,8 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
             startActivity(new Intent(this, ProfileActivity.class));
         } else if (itemId == R.id.nav_friends) {
             startActivity(new Intent(this, FriendActivity.class));
+        } else if (itemId == R.id.nav_notification) {
+            startActivity(new Intent(this, NotificationActivity.class));
         } else if (itemId == R.id.nav_settings) {
             startActivity(new Intent(this, SettingsActivity.class));
         } else if (itemId == R.id.nav_logout) {
