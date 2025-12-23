@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layoutAddFriend"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp"
+    android:background="@color/colorPrimary">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Kết bạn"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:textColor="@color/colorAccent" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nhập tên người dùng để gửi lời mời"
+        android:textColor="@color/colorSecondary"
+        android:layout_marginTop="8dp" />
+
+    <EditText
+        android:id="@+id/edtFriendName"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:hint="Tên người dùng"
+        android:background="@color/colorSecondary"
+        android:padding="10dp"
+        android:layout_marginTop="16dp" />
+
+    <Button
+        android:id="@+id/btnAddFriend"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:text="Gửi lời mời"
+        android:textStyle="bold"
+        android:layout_marginTop="16dp" />
+
+</LinearLayout>

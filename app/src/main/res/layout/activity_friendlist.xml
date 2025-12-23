@@ -3,47 +3,51 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary">
+    android:background="?attr/colorPrimary"
+    android:padding="16dp">
 
-    <LinearLayout
-        android:id="@+id/topBar"
+    <RelativeLayout
+        android:id="@+id/header"
         android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:orientation="horizontal"
-        android:gravity="center_vertical"
-        android:padding="12dp"
-        android:background="#FFFFFF">
+        android:layout_height="wrap_content">
 
         <ImageView
             android:id="@+id/btnBack"
-            android:layout_width="28dp"
-            android:layout_height="28dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:focusable="true"
             android:src="@drawable/ic_btn_back"
-            android:tint="#000000"/>
+            android:padding="15dp"
+            android:clickable="true" />
 
         <TextView
-            android:id="@+id/titleText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
             android:text="Bạn bè"
-            android:textSize="20sp"
-            android:textColor="@color/colorPrimary"/>
-    </LinearLayout>
+            android:layout_centerInParent="true"
+            android:textStyle="bold"
+            android:textColor="?attr/colorAccent"
+            android:textSize="25sp" />
+
+    </RelativeLayout>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="#DDDDDD"/>
+        android:background="?attr/colorSecondary"
+        android:layout_marginTop="10dp"/>
 
     <LinearLayout
         android:id="@+id/tabBar"
         android:layout_width="match_parent"
-        android:layout_height="48dp"
+        android:layout_height="40dp"
         android:orientation="horizontal"
-        android:gravity="center_vertical"
-        android:padding="4dp"
-        android:background="#FFFFFF">
+        android:gravity="center_vertical">
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="?attr/colorSecondary"/>
 
         <TextView
             android:id="@+id/tabOnline"
@@ -52,9 +56,15 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="Trực tuyến"
-            android:textColor="@color/colorPrimary"
+            android:textColor="?attr/colorAccent"
             android:textStyle="bold"
-            android:background="#EEEEEE"/>
+            android:textSize="16sp"
+            android:background="?attr/colorSecondary"/>
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="?attr/colorSecondary"/>
 
         <TextView
             android:id="@+id/tabAll"
@@ -63,8 +73,15 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="Tất cả"
-            android:textColor="@color/colorPrimary"
-            android:background="#EEEEEE"/>
+            android:textColor="?attr/colorAccent"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:background="?attr/colorPrimary"/>
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="?attr/colorSecondary"/>
 
         <TextView
             android:id="@+id/tabAdd"
@@ -73,28 +90,38 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="Thêm bạn"
-            android:textColor="@color/colorPrimary"
-            android:background="#EEEEEE"/>
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="?attr/colorAccent"
+            android:background="?attr/colorPrimary"/>
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="?attr/colorSecondary"/>
     </LinearLayout>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="#DDDDDD"/>
+        android:background="?attr/colorSecondary"
+        android:layout_marginBottom="5dp"/>
 
     <EditText
         android:id="@+id/searchBar"
         android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:hint="Search"
-        android:textColor="#000"
-        android:background="@color/colorSecondary"
-        android:padding="12dp"
-        android:layout_margin="10dp"/>
+        android:layout_height="40dp"
+        android:hint="Tìm kiếm"
+        android:textSize="16sp"
+        android:textColor="?attr/colorAccent"
+        android:background="?attr/colorSecondary"
+        android:padding="10dp"
+        android:layout_marginVertical="12dp"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvFriends"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:paddingHorizontal="10dp"/>
 
 </LinearLayout>

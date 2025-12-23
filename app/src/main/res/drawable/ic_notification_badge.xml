@@ -1,0 +1,9 @@
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/ic_noti"/>
+    <item android:gravity="top|end">
+        <shape android:shape="oval">
+            <size android:width="8dp" android:height="8dp"/>
+            <solid android:color="#FF0000"/>
+        </shape>
+    </item>
+</layer-list>

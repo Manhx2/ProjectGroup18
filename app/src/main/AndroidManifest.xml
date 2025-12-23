@@ -50,6 +50,10 @@
         <activity
             android:name=".FriendActivity"
             android:exported="true" />
+        <activity
+            android:name=".NotificationActivity"
+            android:exported="true" />
+
     </application>
 
 </manifest>
