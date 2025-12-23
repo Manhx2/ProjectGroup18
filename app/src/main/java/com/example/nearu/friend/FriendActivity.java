@@ -1,17 +1,18 @@
-package com.example.nearu;
+package com.example.nearu.friend;
 
-import android.graphics.Color;
 import android.os.Bundle;
-import android.util.TypedValue;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
 
+
+import com.example.nearu.BaseActivity;
+import com.example.nearu.R;
+import com.example.nearu.ThemeManager;
 
 import java.util.ArrayList;
 

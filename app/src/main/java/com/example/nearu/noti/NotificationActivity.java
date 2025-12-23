@@ -1,7 +1,10 @@
-package com.example.nearu;
+package com.example.nearu.noti;
 
 import android.os.Bundle;
 import androidx.recyclerview.widget.*;
+
+import com.example.nearu.BaseActivity;
+import com.example.nearu.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.*;
 import java.util.*;
@@ -15,7 +18,7 @@ public class NotificationActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle b) {
         super.onCreate(b);
-        setContentView(R.layout.activity_notification);
+        setContentView(com.example.nearu.R.layout.activity_notification);
 
         rv = findViewById(R.id.rvNotification);
         rv.setLayoutManager(new LinearLayoutManager(this));

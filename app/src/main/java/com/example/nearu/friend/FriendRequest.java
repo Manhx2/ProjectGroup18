@@ -1,4 +1,4 @@
-package com.example.nearu;
+package com.example.nearu.friend;
 
 public class FriendRequest {
     private String fromId;

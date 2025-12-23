@@ -1,4 +1,4 @@
-package com.example.nearu;
+package com.example.nearu.noti;
 
 import com.google.firebase.database.FirebaseDatabase;
 import java.util.HashMap;

@@ -1,8 +1,11 @@
-package com.example.nearu;
+package com.example.nearu.noti;
 
 import android.view.*;
 import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.nearu.R;
+
 import java.util.List;
 
 public class NotificationAdapter
